@@ -8,12 +8,14 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
  	<!-- HoJas de estilo de Materialize -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
+    
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 
  </head>
  <body>
+ 	<!-- Menu para ordenadores -->
  	<div class="navbar-fixed">
- 		<nav class="nav z-depth-0" id="navigation">
+ 		<nav class="transparent z-depth-0" id="navigation">
  			<div class="nav-wrapper">
  				<a href="#" class="brand-logo"><i class="material-icons">codec</i></a>
  				<ul class="right hide-on-med-and-down">
@@ -26,6 +28,41 @@
  		</nav>
  	</div>
 
+ 	<!-- Menu para dispositivos medianos y pequeños -->
+ 	<div class="fixed-action-btn horizontal click-to-toggle hide-on-large-only">
+ 		<a href="#" class="btn-floating btn-large red"><i class="material-icons">menu</i></a>
+ 		<ul>
+ 			<li><a href="#" class="btn-floating red"><i class="material-icons">home</i></a></li>
+
+ 			<li><a href="#" class="btn-floating red"><i class="material-icons">attach_money</i></a></li>
+
+ 			<li><a href="#" class="btn-floating red"><i class="material-icons">fingerprint</i></a></li>
+
+ 			<li><a href="#" class="btn-floating red"><i class="material-icons">assignment_turned_in</i></a></li>
+ 		</ul>
+ 	</div>
+    
+    <header class="v-header">
+        <div class="fullscreen">
+            <video src="assets/videos/vb1.mov" autoplay="true" loop="true"></video>
+            <div class="header-overlay">
+            </div>
+            <div class="header-content container">
+                <h3>Descubre tu verdadero potencial</h3>
+                <p>Empieza por escribir tu propia historia.</p>
+                <a href="#" class="waves-effect waves-light red lighten-1 btn"><i class="material-icons">fingerprint</i>Ingresar</a>
+            </div>
+        </div>
+    </header>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">
+    	document.addEventListener('DOMContentLoaded', function() {
+    		var elems = document.querySelectorAll('.fixed-action-btn');
+    		var instances = M.FloatingActionButton.init(elems, {
+    			direction: 'left'
+    		});
+    	});
+    </script>
  	<!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
  </body>

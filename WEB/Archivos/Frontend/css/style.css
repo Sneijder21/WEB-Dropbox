@@ -1,0 +1,64 @@
+*{
+	box-sizing: border-box;
+}
+body{
+	margin: 0;
+	line-height: 1.5;
+	overflow-x: hidden;
+	/*falta ingresar la familia de fuentes*/
+	font-size: 1.2rem;
+}
+nav .nav-wrapper{
+	background-color: black;
+	margin-left: 5px;
+
+}
+nav .nav-wrapper ul>li:hover{
+	background-color: rgba(255,255,255,.2);
+}
+.navbar-fixed{
+	background: black;
+}
+
+/*vidio*/
+.v-header{
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	color: white;
+}
+.fullscreen{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	overflow: hidden;
+}
+.fullscreen video{
+	min-width: 100%;
+	min-height: 100%;
+}
+.header-overlay{
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: #000000;
+	z-index: 1;
+	opacity: 0.8;
+}
+
+/*boton*/
+.container{
+	max-width: 960px;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	margin: auto;
+	text-align: center;
+}
+.header-content{
+	z-index: 2;
+}
+/*minute 11*/
