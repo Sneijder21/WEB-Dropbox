@@ -14,16 +14,16 @@ body{
 	font-size: 1.2rem;
 }
 nav .nav-wrapper{
-	background-color: black;
+	/*background-color: black;*/
 	margin-left: 5px;
 
 }
 nav .nav-wrapper ul>li:hover{
 	background-color: rgba(255,255,255,.2);
 }
-.navbar-fixed{
+/*.navbar-fixed{
 	background: black;
-}
+}*/
 
 /*vidio*/
 .v-header{
@@ -95,4 +95,36 @@ nav .nav-wrapper ul>li:hover{
 }
 .row .feature{
 	padding-bottom: 50px;
+}
+/*--------------------------------------------------------
+FOOTER
+-------------------------------------------------------*/
+h1,h2,h3,h4,h5,h6{ margin: 1% 0 1% 0; }
+.footer_text{ font-size: 1.3rem; }
+ul{ list-style: none;padding: 0; }
+.footer-social-icons{ width: 350px; display: block; margin: 0 auto; padding-top: 12px; }
+
+ul.social-icons{ margin-top: 10px; }
+.social-icons li{ vertical-align: top; display: inline; height: 100px; }
+.social-icons a , h4{ color: #fff; text-decoration: none; }
+.social-icon{ color: #fff; }
+
+.fa-whatsapp, .fa-facebook, .fa-twitter, .fa-youtube{
+	padding: 10px 14px;
+	-o-transition:.5s;
+	-ms-transition:.5s;
+	-moz-transition:.5s;
+	-webkit-transition:.5s;
+	transition:.5s;
+}
+.fa-whatsapp:hover{ background-color: #25d366; }
+.fa-facebook:hover{ background-color: #3d5b99; }
+.fa-twitter:hover{ background-color: #00aced; }
+.fa-youtube:hover{ background-color: #e64a41; }
+
+/*Adaptar modulo responnsive*/
+@media(max-width: 960px){
+	.header-content h3{
+		font-size: 8vh;
+	}
 }
