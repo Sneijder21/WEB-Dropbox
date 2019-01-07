@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Dosis:400,500,600,700');
+
+.sidenav{
+	background-color: #24242d; color: white;
+}
+.sidenav li a, .sidenav li a i.fas, i.material-icons.menu{
+	color: white;
+	margin-top: 4px;		
+}
+.sidenav li a:hover{
+	background-color: rgba(171, 235, 198,.5);
+}
+.space{padding-top: 50px;}
