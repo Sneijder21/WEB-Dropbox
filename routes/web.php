@@ -14,17 +14,26 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
 /* Rutas agrupada */
-Route::prefix('panel')->group(function () {
+/*Route::prefix('panel')->group(function () {
 
     Route::view('/', 'Backend.Dashboard')->name('admin');
     Route::view('users', 'Backend.Users')->name('admin.user');
     
     Route::get('upload_files', 'FilesController@index')->name('admin.files.index');
     Route::post('archivo-subido', 'FilesController@store')->name('admin.files.store');
-    Route::get('ver-archivo-subido', 'FilesController@show')->name('admin.files.show');
-    /*Route::post('upload_files/store','FilesController@store')->name('admin.upload.store');*/
+    Route::get('ver-archivo-subido/{name}', 'FilesController@show')->name('admin.files.show');
+    //Route::post('upload_files/store','FilesController@store')->name('admin.upload.store');
 
+});*/
+
+Route::group(['prefix'=>'panel','middleware'=>'auth'],function(){
+	Route::view('/', 'Backend.app')->name('admin');
+    Route::view('users', 'Backend.Users')->name('admin.user');
+    Route::get('upload_files', 'FilesController@index')->name('admin.files.index');
+    Route::post('archivo-subido', 'FilesController@store')->name('admin.files.store');
+    Route::get('ver-archivo-subido/{name}', 'FilesController@show')->name('admin.files.show');
 });
 
 /* Rutas normales */
