@@ -6,7 +6,7 @@
                 <!-- CSRF Token -->
                 <meta content="{{ csrf_token() }}" name="csrf-token">
                     <title>
-                        {{ config('app.name', 'Laravel') }}
+                        {{ config('app.name', 'Dropbox') }}
                     </title>
                     <!-- Scripts -->
                     <script defer="" src="{{ asset('js/app.js') }}">

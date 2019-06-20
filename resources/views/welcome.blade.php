@@ -1,70 +1,21 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <title>Bienvenido a Dropbox 2.0</title>
+    <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- HoJas de estilo de Materialize -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Libreria de font awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/fgstyle.css') }}">
 
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        {{-- <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -79,20 +30,235 @@
                 </div>
             @endif
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
+        </div> --}}
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+<div class="container-fluid">
+    <!-- Menu para ordenadores -->
+    <div class="navbar-fixed">
+        <nav class="transparent z-depth-0" id="navigation">
+            @if (Route::has('login'))
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo"><i class="material-icons">codec</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="#"><i class="material-icons left">home</i>Inicio</a></li>
+                    <li><a href="#destacated"><i class="material-icons left">attach_money</i>Precio</a></li>
+                    @auth
+                    <li><a href="{{ url('panel') }}"><i class="material-icons left">fingerprint</i>Principal</a></li>
+                    @else
+                        <li><a href="{{ route('login') }}"><i class="material-icons left">fingerprint</i>Ingresar</a></li>
+                        @if(Route::has('register'))
+                            <li><a href="{{ route('register') }}"><i class="material-icons left">assignment_turned_in</i>Registrarse</a></li>
+                        @endif
+                    @endauth
+                </ul>
+            </div>
+            @endif
+        </nav>
+    </div>
+
+    <!-- Menu para dispositivos medianos y pequeños -->
+    <div class="fixed-action-btn horizontal click-to-toggle hide-on-large-only">
+        <a href="#" class="btn-floating btn-large red"><i class="material-icons">menu</i></a>
+        @if(Route::has('login'))
+        <ul>
+            @auth
+            <li><a href="{{ url('panel') }}" class="btn-floating red"><i class="material-icons">home</i></a></li>
+            @else
+            <li><a href="#destacated" class="btn-floating red"><i class="material-icons">attach_money</i></a></li>
+
+            <li><a href="{{ route('login') }}" class="btn-floating red"><i class="material-icons">fingerprint</i></a></li>
+            @if(Route::has('register'))
+                <li><a href="{{ route('register') }}" class="btn-floating red"><i class="material-icons">assignment_turned_in</i></a></li>
+            @endif
+            @endauth
+        </ul>
+        @endif
+    </div>
+    <!-- Vidio -->
+    <header class="v-header">
+        <div class="fullscreen">
+             <video src="{{ asset('assets/videos/vb.mp4') }}" autoplay="true" loop="true"></video>
+            <!-- remove resposive video porque se redimensiona el video  a pequeño jeje -->
+            <video class="responsive-video" src="{{ asset('assets/videos/vb.mp4') }}" autoplay="true" loop="true" type="video/mov"></video>
+        </div>
+        <div class="header-overlay">
+            
+        </div>
+        <div class="header-content container">
+            <h3>Descubre tu verdadero potencial</h3>
+            <p>Empieza por escribir tu propia historia.</p><br>
+            <a href="{{ route('login') }}" class="waves-effect waves-light red lighten-1 btn">Ingresar <i class="material-icons right">fingerprint</i></a>
+        </div>
+    </header>
+    <!-- Fin de video -->
+    <div class="space"></div>
+
+    <!-- Contenido destacado -->
+    <div class="container" id="destacated">
+        <div class="row">
+
+            <div class="col s12 m12 l4 feature">
+                <i class="material-icons">slideshow</i>
+                <h3 class="subtitle">Cursos</h3>
+                <p>Nuestros cursos estan enfocados en crear la mejor experiencia para el alumno<br><b><em>Vamos directamente al grano y no cobramos tanto!</em></b>             </p> 
+            </div>
+
+            <div class="col s12 m12 l4 feature">
+                <i class="material-icons">code</i>
+                <h3 class="subtitle">Tutoriales</h3>
+                <p>En algun momento vas a necesitar implementar algo nuevo, asi que creamos los tutoriales para que aprendas o recurdes lo que necesites
+                </p> 
+            </div>
+
+            <div class="col s12 m12 l4 feature">
+                <i class="material-icons">forum</i>
+                <h3 class="subtitle">Soporte</h3>
+                <p>Cuando no puedas resolver algo por ti mismo deja todo en manos de los expertos. Nuestro equipo te ayudara con tu requerimiento.
+                </p>
+            </div>
+
+        </div>
+    </div>
+    <!-- Fin del contenido destacado -->
+
+    <div class="space"></div>
+
+<!-- Comentario de los estudiantes -->
+    <div class="container">
+        <div class="row">
+            <h5>Nuestros Estudiantes dicen: </h5>
+            <div class="space"></div>
+
+            <div class="col s12 m12 l6">
+                <div class="card-panel grey lighten-5 hoverable">
+                    <div class="row valign-wrapper">
+                        <div class="col s2">
+                            <img src="assets/images/profile.jpg" class="circle responsive-img">
+                        </div>
+                        <div class="col s10">
+                            <blockquote>
+                                <b>Brayan Angarita</b>
+                                Una excelente explicacion y gran avance en un tiempo muy corto 
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col s12 m12 l6">
+                <div class="card-panel grey lighten-5 hoverable">
+                    <div class="row valign-wrapper">
+                        <div class="col s2">
+                            <img src="{{ asset('assets/images/profile.jpg') }}" class="circle responsive-img">
+                        </div>
+                        <div class="col s10">
+                            <blockquote>
+                                <b>Brayan Angarita</b>
+                                Una excelente explicacion y gran avance en un tiempo muy corto 
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>  
+
+        <div class="space"></div>
+
+        <a href="" class="waves-effect waves-light red lighten-1 btn"><i class="material-icons right">video_library</i>Ver Todos los Cursos</a>
+        <div class="space"></div>
+    </div>
+    <!-- FIn de comentario de los estudiantes -->
+    <div class="space"></div>
+<!-- listado de cursos -->
+    <div class="row">
+        <div class="col s12 m4">
+            <div class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="https://images.unsplash.com/photo-1532472242109-a0f5c155e3de?ixlib=rb-0.3.5&s=52d5f2d993d7977c837a4ecc253e9da5&dpr=1&auto=format&fit=crop&w=525&q=60">
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">Nike<i class="material-icons right">shopping_cart</i></span>
+                    <p><a href="#" class="red-text">Mas Información</a></p>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">Nike<i class="material-icons right">close</i></span>
+                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
                 </div>
             </div>
         </div>
+
+        <div class="col s12 m4">
+            <div class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="https://images.unsplash.com/photo-1510364966834-1c2f9fd921d7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ca342fa54b75ec30fbe9df5d6670cf53&auto=format&fit=crop&w=500&q=60">
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">Red Hair<i class="material-icons right">more_vert</i></span>
+                    <p><a href="#" class="red-text">More Descriptión</a></p>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">Red Hair<i class="material-icons right">close</i></span>
+                    <p>She is very beautiful, her red hair is amazing.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col s12 m4">
+            <div class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="https://images.unsplash.com/photo-1538041941016-14978146a19c?ixlib=rb-0.3.5&s=3026c5f0967a46b770e7f141b17b92b5&dpr=1&auto=format&fit=crop&w=225&q=60">
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+                    <p><a href="#" class="red-text">This is a link</a></p>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Fin de la lista de los cursos -->
+    <!-- Inicio del footer -->
+    <footer class="grey darken-4">
+        <!-- <p><i class="fab fa-angular"></i></p> -->
+        <div class="col s12 footer-social center">
+            <div class="col s12">
+                <h4 class="footer_text">¿ Nos puedes contactar en nuestras siguientes redes sociales ?</h4>
+            </div>
+            <div class="col s12">
+                <ul class="social-icons">
+                    <li><a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a></li>
+                    <li><a href="#" class="social-icon"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="#" class="social-icon"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#" class="social-icon"><i class="fab fa-youtube"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <!-- Fin del footer -->
+</div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.fixed-action-btn');
+            var instances = M.FloatingActionButton.init(elems, {
+                direction: 'left'
+            });
+        });
+        $(window).scroll(function(){
+            if($("#navigation").offset().top>50){
+                $("#navigation").addClass("transparent grey darken-4");
+            }else{
+                $("#navigation").removeClass("grey darken-4");
+            }
+        })
+    </script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        
     </body>
 </html>

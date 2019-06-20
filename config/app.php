@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Dropbox'),
 
     /*
     |--------------------------------------------------------------------------
@@ -167,11 +167,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        Dropbox\Providers\AppServiceProvider::class,
+        Dropbox\Providers\AuthServiceProvider::class,
+        // Dropbox\Providers\BroadcastServiceProvider::class,
+        Dropbox\Providers\EventServiceProvider::class,
+        Dropbox\Providers\RouteServiceProvider::class,
 
     ],
 
