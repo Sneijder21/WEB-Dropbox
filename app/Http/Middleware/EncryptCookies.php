@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace Dropbox\Http\Middleware;
 
 use Illuminate\Cookie\Middleware\EncryptCookies as Middleware;
 

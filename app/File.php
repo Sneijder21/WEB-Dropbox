@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Dropbox;
 
 use Illuminate\Database\Eloquent\Model;
 
