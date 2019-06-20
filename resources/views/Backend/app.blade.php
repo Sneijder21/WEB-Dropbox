@@ -3,7 +3,6 @@
  <head>
  	<meta charset="UTF-8">
  	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
- 	<title>Panel Administrativo</title>
  	<!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
  	<!-- HoJas de estilo de Materialize -->
@@ -20,6 +19,7 @@
     </style>
  </head>
  <body>
+    
     <!-- Navegacion lateral -->
     <div class="grey darken-3" style="height: 35px;">
          <!-- navbar content here  -->
@@ -39,10 +39,10 @@
             <li {{ request()->is('panel')? 'class=active':'' }}>
                 <a  href="{{ route('admin') }}" class="waves-effect"><i class="fas fa-tasks"></i>Tableros</a>
             </li>
-            <li {{ request()->is('users')?'class=active':'' }}>
+            <li {{ request()->is('panel/users')?'class=active':'' }}>
                 <a  href="{{ route('admin.user') }}" class="waves-effect"><i class="fas fa-user-secret"></i>Usuarios</a>
             </li>
-            <li {{ request()->is('upload_files')? 'class=active':'' }}>
+            <li {{ request()->is('panel/files')? 'class=active':'' }}>
                 <a  href="{{ route('admin.files.index') }}" class="waves-effect"><i class="fas fa-cloud-upload-alt"></i>Archivos</a>
             </li>
 
@@ -50,50 +50,8 @@
         <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons menu">menu</i></a>
     </div>
     <!-- Fin de la navegacion lateral -->
-
-    <!-- Inicio de las Cards -->
-    <div class="col s12">
-        <div class="row">
-            <div class="col s12 m6 l4">
-                <div class="card hoverable">
-                    <div class="card-image">
-                        <img src="{{ asset('assets/images/office.jpg') }} " class="circle responsive-img">
-                        <span class="card-title">Office</span>
-                        <a class="btn-floating halfway-fab waves-effect waves-light grey darken-3"><i class="material-icons">add</i></a>
-                    </div>
-                    <div class="card-content">
-                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col s12 m6 l4 center-align">
-                <div class="card hoverable">
-                    <div class="card-image">
-                        <img src="{{ asset('assets/images/profile.jpg') }}">
-                    </div>
-                    
-                </div>
-            </div>
-
-            <div class="col s12 m6 l4">
-                <div class="card hoverable">
-                    <div class="card-image">
-                        <img src="{{ asset('assets/images/office.jpg') }} ">
-                        <span class="card-title">Office</span>
-                        <a class="btn-floating halfway-fab waves-effect waves-light grey darken-3"><i class="material-icons">add</i></a>
-                    </div>
-                    <div class="card-content">
-                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <!-- Fin de las cards -->
-
-
+    
+    @yield('content')
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
  	<!-- Compiled and minified JavaScript -->
@@ -101,7 +59,8 @@
     <script type="text/javascript">
         $(document).ready(function(){
             $('.sidenav').sidenav();
+            $('select').formSelect();
         });
     </script>
  </body>
- </html>
+ </html> 
