@@ -16,7 +16,9 @@ class CreatePostFilesTable extends Migration
         Schema::create('post_files', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('slug')->unique();
             $table->unsignedInteger('category_id');
+            $table->unsignedInteger('user_id');
             $table->timestamps();
         });
     }

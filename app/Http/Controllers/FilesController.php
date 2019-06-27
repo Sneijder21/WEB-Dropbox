@@ -8,12 +8,19 @@ use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str as Str;
 
 class FilesController extends Controller
 {
+
     public function index(){
         /*$PostFiles=\DB::table('post_files')->get();*/
-        $PostFiles=PostFile::all();
+        //$PostFiles=PostFile::all();
+        $id = Auth::id();
+        $PostFiles=PostFile::where('user_id', $id)->get();
+        Log::info($id);
         return view('Backend.Files.index',compact('PostFiles'));
     }
 
@@ -27,13 +34,17 @@ class FilesController extends Controller
             //$name=$request->file->getClientOriginalName();
             $category=$request->get('category');
             $name=$request->get('name');
+            $slug=str_slug($request->get('name'));
+            // $slug = Str::slug($name);
             $request->file->storeAs('public',$name);
 
             $file=new PostFile;
             $file->name=$name;
+            $file->slug=$slug;
             $file->category_id=$category;
+            $file->user_id=auth()->id();
             $file->save();
-            return "el archivo se subio exitosamente";
+            return "Archivo exitosamente guardado";
             
             /*$request->file('file');
             return $request->file->storeAs('public', $request->file->getClientOriginalName());*/ 
@@ -48,6 +59,13 @@ class FilesController extends Controller
 
         /*Si queremos que nos retorne un archivo en especifico se hace de la sig. forma.*/
         return response()->download(storage_path('app/public/'.$name),null,[],null);
+    }
+
+    public function id($slug){
+        // $PostFiles= PostFile::find($slug);
+        $PostFiles= PostFile::where('slug','=', $slug)->firstOrFail();
+        Log::info($PostFiles);
+        return  view('Backend.files.details',compact('PostFiles'));
     }
 
     public function delete($name){
