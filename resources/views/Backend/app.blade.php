@@ -30,17 +30,24 @@
                     <div class="background">
                         <img src="{{ asset('assets/images/office.jpg')}}" class="img-profile">
                     </div>
-                    <a href="#user"><img class="circle" src="{{ asset('assets/images/perfil.png') }}"></a>
+                     <a href="#user"><img class="circle" src="{{ asset('assets/images/perfil.png') }}"></a>
                     <a href="#name"><span class="white-text name"> {{ auth()->user()->name }} </span></a>
                     <a href="#email"><span class="white-text email">{{ auth()->user()->email }}</span></a>
-                    <a href="#"><i class="fas fa-power-off" aria-hidden="true" style="margin-right: 15px; color: red;"></i>Cerrar Sesión</a>
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+
+                    <form action="{{ route('logout') }}" id="logout-form" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+
+                    <i class="fas fa-power-off" aria-hidden="true" style="margin-right: 15px; color: red;"></i>Cerrar Sesión</a>
                 </div>
             </li>
             <li {{ request()->is('panel')? 'class=active':'' }}>
                 <a  href="{{ route('admin') }}" class="waves-effect"><i class="fas fa-tasks"></i>Tableros</a>
             </li>
             <li {{ request()->is('panel/users')?'class=active':'' }}>
-                <a  href="{{ route('admin.user') }}" class="waves-effect"><i class="fas fa-user-secret"></i>Usuarios</a>
+                <a  href="{{ route('admin.users.index') }}" class="waves-effect"><i class="fas fa-user-secret"></i>Usuarios</a>
             </li>
             <li {{ request()->is('panel/files')? 'class=active':'' }}>
                 <a  href="{{ route('admin.files.index') }}" class="waves-effect"><i class="fas fa-cloud-upload-alt"></i>Archivos</a>
@@ -60,6 +67,8 @@
         $(document).ready(function(){
             $('.sidenav').sidenav();
             $('select').formSelect();
+            $('.tooltipped').tooltip();
+            $('.modal').modal();
         });
     </script>
  </body>

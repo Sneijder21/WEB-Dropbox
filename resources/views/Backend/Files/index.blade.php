@@ -3,6 +3,14 @@
 @section('content')
 <div class="container">
     <div class="row">
+        <div class="col s4 m9 right-align" style="margin-top: 5%;">
+            <a href="{{ route('admin.files.create') }}" class="waves-effect waves-light green accent-4 btn"><i class="material-icons left">add</i>New File</a>
+        </div>
+        <div class="col s8 m3 right-align" style="margin-top: 5%;">
+            <a href="#modal1" class="waves-effect waves-light green accent-4 btn tooltipped modal-trigger" data-position="top" data-tooltip="New Category"><i class="material-icons left">add</i>New Category</a>   
+        </div>
+    </div>
+    <div class="row">
         <div class="col s12 m12 l12 xl12 left">
             <h3>
                 Esta es la lista de todos los Archivos
@@ -16,10 +24,10 @@
         <table class="center reposive-table highlight">
             <thead>
                 <tr>
-                    <th>Numero de foto</th>
                     <th>Nombre</th>
                     <th>Categoria</th>
-                    <th>Visualizar</th>
+                    <th>Usuario</th>
+                    <th>Detalle</th>
                     <th>Ocultar</th>
                     <th>Eliminar</th>
                 </tr>
@@ -27,12 +35,19 @@
             <tbody>
                 @foreach ($PostFiles as $postfile)
                     <tr>
-                        <td>{{ $postfile->id }}</td>
                         <td>{{ $postfile->name }}</td>
                         <td>{{ $postfile->belongs->name }}</td>
-                        <td>
+                        <td>{{ $postfile->belongsUser->name }}</td>
+                        
+        {{--                 <td>
                             <a href="{{ route('admin.files.show',$postfile->name) }}" class="waves-effect waves-light green accent-4 btn" target="_blank"><i class="material-icons left">visibility</i>Ver</a>
+                        </td> --}}
+
+
+                        <td>
+                            <a href="{{ route('admin.files.id',$postfile->slug) }}" class="waves-effect waves-light green accent-4 btn" target="_blank"><i class="material-icons left">visibility</i>Detalle</a>
                         </td>
+
 
                         <td>
                             <a  href="{{ route('admin.files.hidde',$postfile->id) }}" class="waves-effect waves-light teal lighten-2 btn"><i class="material-icons left" >visibility_off</i>Ocultar</a>
@@ -61,5 +76,24 @@
         </div>
     </div>
 </div>
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+    <form action="{{ route('admin.category.store') }}" method="post">
+        <div class="modal-content">
+            <h4 style="margin-bottom: 5%;">Registro de Categoria</h4>
+                @csrf
+            <div class="input-field col s6">
+                <i class="material-icons prefix">category</i>
+                <input id="icon_prefix" type="text" class="validate" name="name_category" required>
+                <label for="icon_prefix">Nombre del catalogo</label>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="modal-close waves-effect waves-green btn-flat">Guardar</button>
+        </div>
+    </form>
+</div>
+          
 
 @stop
