@@ -25,6 +25,10 @@ Route::group(['prefix'=>'panel','middleware'=>'auth'],function(){
     Route::get('upload_files', 'FilesController@create')->name('admin.files.create');
 
     Route::post('archivo-subiendo', 'FilesController@store')->name('admin.files.store');
+    
+    /*Proteger los archivos mediante un SLUG*/
+    Route::get('detalles/{id}', 'FilesController@id')->name('admin.files.id');
+
     Route::get('ver-archivo/{name}', 'FilesController@show')->name('admin.files.show');
     
     Route::get('borrar-archivo/{name}', 'FilesController@delete')->name('admin.files.delete');
@@ -33,6 +37,10 @@ Route::group(['prefix'=>'panel','middleware'=>'auth'],function(){
 
     Route::get('validar-archivo/{name}', 'FilesController@validation_file')->name('admin.files.validar');
 
+    Route::post('category-store','CategoryController@store')->name('admin.category.store');
+
+    // Ruta for the all users
+    Route::resource('users','UserController',['as'=>'admin']);
 
 });
 
