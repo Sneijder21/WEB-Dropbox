@@ -8,7 +8,7 @@
             </div>
 
             <div class="col s6 right-align" style="margin-top: 5%; margin-bottom: 5%;">
-                <a href="" class="waves-effect waves-light green accent-4 btn"><i class="material-icons left">add</i>AGREGAR NUEVO USUARIO</a>
+                <a href="{{ route('admin.users.create') }}" class="waves-effect waves-light green accent-4 btn"><i class="material-icons left">add</i>AGREGAR NUEVO USUARIO</a>
             </div>
         </div>
     </div>
@@ -22,6 +22,7 @@
                         <th>Correo</th>
                         <th>Cargo</th>
                         <th>Foto de Perfil</th>
+                        <th>Ver</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
                     </tr>
@@ -32,12 +33,26 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>Admins</td>
-                        <td>{{ $user->image_profile }}</td>
+                          
                         <td>
-                            <a class="waves-effect waves-light blue lighten-2 btn"><i class="material-icons left">edit</i>Editar</a>
+                            <a href="#user"> <img class="circle" src="{{ asset('profile/images')}}/{{ $user->image_profile}}" style="width: 50px;height: auto;"> </a>
                         </td>
+                        
                         <td>
-                            <a class="waves-effect waves-light red darken-1 btn"><i class="material-icons left">delete</i>Eliminar</a>
+                            <a href="{{ route('admin.users.show',$user->id) }}" class="waves-effect waves-light green accent-4 btn" target="_blank"><i class="material-icons left">visibility</i>Detalle</a>
+                        </td>
+
+                        <td>
+                            <a href="{{ route('admin.users.edit',$user->id) }}" class="waves-effect waves-light blue lighten-2 btn"><i class="material-icons left">edit</i>Editar</a>
+                        </td>
+
+                        <td>
+                            <form action="{{ route('admin.users.destroy',$user->id) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button class="waves-effect waves-light red darken-1 btn" type="submit"><i class="material-icons left">delete</i>Eliminar</button>
+                            </form>
+                          
                         </td>
                     </tr>
                     @endforeach

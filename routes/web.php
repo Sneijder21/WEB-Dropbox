@@ -40,8 +40,10 @@ Route::group(['prefix'=>'panel','middleware'=>'auth'],function(){
     Route::post('category-store','CategoryController@store')->name('admin.category.store');
 
     // Ruta for the all users
-    Route::resource('users','UserController',['as'=>'admin']);
+    //Route::resource('users','UserController',['as'=>'admin']);
+    Route::get('users','UserController@index')->name('admin.users.index')->middleware('role:admin.users.index');
 
+    // video 47 minute 10:12 de permisos pendiente.
 });
 
 /* Rutas normales */

@@ -28,9 +28,9 @@
             <li>
                 <div class="user-view">
                     <div class="background">
-                        <img src="{{ asset('assets/images/office.jpg')}}" class="img-profile">
+                        <img src="{{ asset('assets/images/office.jpg') }}" class="img-profile">
                     </div>
-                     <a href="#user"><img class="circle" src="{{ asset('assets/images/perfil.png') }}"></a>
+                     <a href="#user"> <img class="circle" src="{{ asset('profile/images')}}/{{ auth()->user()->image_profile}}"> </a>
                     <a href="#name"><span class="white-text name"> {{ auth()->user()->name }} </span></a>
                     <a href="#email"><span class="white-text email">{{ auth()->user()->email }}</span></a>
                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -69,6 +69,7 @@
             $('select').formSelect();
             $('.tooltipped').tooltip();
             $('.modal').modal();
+            $('.slider').slider();
         });
     </script>
  </body>
