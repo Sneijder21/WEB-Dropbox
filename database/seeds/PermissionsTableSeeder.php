@@ -50,9 +50,36 @@ class PermissionsTableSeeder extends Seeder
         	'description'=>	'Eliminar un archivo'
         ]);
 
+        // User Permissions
+        Permission::create([
+            'name'=>        'Ver la lista de los usuarios',
+            'slug'=>        'admin.users.index',
+            'description'=> 'ver todos los usuarios en el sistema',
+        ]);
 
+        Permission::create([
+            'name'=>        'Crear un usuario',
+            'slug'=>        'admin.users.create',
+            'description'=> 'crear un usuario en el sistema',
+        ]);
 
+        Permission::create([
+            'name'=>        'Mostrar detalle del usuario',
+            'slug'=>        'admin.users.show',
+            'description'=> 'Detalle de un usuario en el sistema',
+        ]);
 
+        Permission::create([
+            'name'=>        'Edicion de un usuario',
+            'slug'=>        'admin.users.edit',
+            'description'=> 'Editar datos del usuario en el sistema',
+        ]);
+
+        Permission::create([
+            'name'=>        'Eliminar Usuario',
+            'slug'=>        'admin.users.destroy',
+            'description'=> 'Eliminar usuario en el sistema',
+        ]);
 
     }
 }

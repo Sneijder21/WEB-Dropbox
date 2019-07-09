@@ -55,6 +55,14 @@ We would like to extend our thanks to the following sponsors for helping fund on
 - [We Are The Robots Inc.](https://watr.mx/)
 - [Understand.io](https://www.understand.io/)
 
+##Plugins
+Estos son algunos de los plugins de terceros, que se implementaron en este proyecto, alguna funcion que no le sirva, posiblemente sea necesaria instalar algunas de los siguientes listados:
+
+- [Caffenaited](https://github.com/caffeinated/shinobi)
+- [LaravelCollective](https://github.com/LaravelCollective/html/releases/tag/v5.3.0)
+- [SweetAlert](https://github.com/uxweb/sweet-alert)
+- [SweetAlert Docs Configuration](https://sweetalert.js.org/docs/#configuration)
+
 ## Contributing
 
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
